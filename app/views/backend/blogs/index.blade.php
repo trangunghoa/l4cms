@@ -11,7 +11,7 @@ Blog Management ::
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Blog Management
-            <a href="{{ route('create/blog') }}" class="btn btn-outline btn-primary"><i class="fa fa-plus"></i> Create</a>
+            <a href="{{ route('create/blog') }}" class="btn btn-outline btn-primary btn-xs"><i class="fa fa-plus"></i> Create</a>
         </h1>
     </div>
     <!-- /.col-lg-12 -->
@@ -34,7 +34,7 @@ Blog Management ::
                 <td>{{ $post->comments()->count() }}</td>
                 <td>{{ $post->created_at->diffForHumans() }}</td>
                 <td>
-                    <a href="{{ route('update/blog', $post->id) }}" class="btn btn-primary btn-xs">@lang('button.edit')</a>
+                    <a href="{{ route('update/blog', $post->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-edit fa-fw"></i> @lang('button.edit')</a>
                     <a href="{{ route('delete/blog', $post->id) }}" class="btn btn-danger btn-xs">@lang('button.delete')</a>
                 </td>
             </tr>
