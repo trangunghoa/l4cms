@@ -35,7 +35,7 @@ Blog Management ::
                 <td>{{ $post->created_at->diffForHumans() }}</td>
                 <td>
                     <a href="{{ route('update/blog', $post->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-edit fa-fw"></i> @lang('button.edit')</a>
-                    <a href="{{ route('delete/blog', $post->id) }}" class="btn btn-danger btn-xs">@lang('button.delete')</a>
+                    <a href="{{ route('delete/blog', $post->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> @lang('button.delete')</a>
                 </td>
             </tr>
         @endforeach
