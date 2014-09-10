@@ -22,7 +22,7 @@
                         <a href="{{ URL::to('admin/blogs') }}">All Posts</a>
                     </li>
                     <li>
-                        <a href="#">Add New</a>
+                        <a href="{{ route('create/blog') }}">Add New</a>
                     </li>
                     <li>
                         <a href="#">Categories</a>
