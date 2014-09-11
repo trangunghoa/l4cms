@@ -47,6 +47,17 @@ Route::group(array('prefix' => 'admin'), function()
 		Route::get('{groupId}/delete', array('as' => 'delete/group', 'uses' => 'Controllers\Admin\GroupsController@getDelete'));
 		Route::get('{groupId}/restore', array('as' => 'restore/group', 'uses' => 'Controllers\Admin\GroupsController@getRestore'));
 	});
+    
+    # Categories Management
+	Route::group(array('prefix' => 'categories'), function()
+	{
+		Route::get('/', array('as' => 'categories', 'uses' => 'Controllers\Admin\CategoriesController@getIndex'));
+		Route::get('create', array('as' => 'create/category', 'uses' => 'Controllers\Admin\CategoriesController@getCreate'));
+		Route::post('create', 'Controllers\Admin\CategoriesController@postCreate');
+		Route::get('{catId}/edit', array('as' => 'update/category', 'uses' => 'Controllers\Admin\CategoriesController@getEdit'));
+		Route::post('{catId}/edit', 'Controllers\Admin\CategoriesController@postEdit');
+		Route::get('{catId}/delete', array('as' => 'delete/category', 'uses' => 'Controllers\Admin\CategoriesController@getDelete'));
+	});
 
 	# Dashboard
 	Route::get('/', array('as' => 'admin', 'uses' => 'Controllers\Admin\DashboardController@getIndex'));

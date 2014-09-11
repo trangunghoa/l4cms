@@ -2,7 +2,7 @@
 
 return array(
 
-	'yes' => 'Yes',
-	'no'  => 'No'
+	'yes' => '<span class="label label-primary">Yes</span>',
+	'no'  => '<span class="label label-default">No</span>'
 
 );

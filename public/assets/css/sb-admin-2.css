@@ -343,3 +343,35 @@ table.dataTable thead .sorting:after {
 .panel-yellow a:hover {
     color: #df8a13;
 }
+
+/*custom css*/
+.custom-w-1 {
+    width: 10%;
+}
+.custom-w-2 {
+    width: 20%;
+}
+.custom-w-3 {
+    width: 30%;
+}
+.custom-w-4 {
+    width: 40%;
+}
+.custom-w-5 {
+    width: 50%;
+}
+.custom-w-6 {
+    width: 60%;
+}
+.custom-w-7 {
+    width: 70%;
+}
+.custom-w-8 {
+    width: 80%;
+}
+.custom-w-9 {
+    width: 90%;
+}
+.custom-w-10 {
+    width: 100%;
+}

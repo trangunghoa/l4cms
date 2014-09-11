@@ -25,7 +25,7 @@
                         <a href="{{ route('create/blog') }}">Add New</a>
                     </li>
                     <li>
-                        <a href="#">Categories</a>
+                        <a href="{{ URL::to('admin/categories') }}">Categories</a>
                     </li>
                     <li>
                         <a href="#">Tags</a>
@@ -50,14 +50,14 @@
             <li>
                 <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
             </li>
-            <li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}>
-                <a{{ (Request::is('admin/users*') ? ' class="active"' : '') }} href="#"><i class="fa fa-user fa-fw"></i> Users<span class="fa arrow"></span></a>
+            <li{{ ((Request::is('admin/users*') || Request::is('admin/group*')) ? ' class="active"' : '') }}>
+                <a{{ ((Request::is('admin/users*') || Request::is('admin/group*')) ? ' class="active"' : '') }} href="#"><i class="fa fa-user fa-fw"></i> Users<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{ URL::to('admin/users') }}">All Users</a>
                     </li>
                     <li>
-                        <a href="#">Add News</a>
+                        <a href="{{ route('create/user') }}">Add News</a>
                     </li>
                     <li>
                         <a href="{{ URL::to('admin/groups') }}">User Groups</a>
