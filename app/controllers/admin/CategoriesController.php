@@ -107,5 +107,57 @@ class CategoriesController extends AdminController
 		// Show the page
 		return View::make('backend/categories/edit', compact('category', 'categories'));
 	}
+    
+    /**
+	 * News Category update form processing page.
+	 *
+	 * @param  int  $catId
+	 * @return Redirect
+	 */
+	public function postEdit($catId = null)
+	{
+		// Check if the news category exists
+		if (is_null($category = Category::find($catId)))
+		{
+			// Redirect to the news management page
+			return Redirect::to('admin/categories')->with('error', Lang::get('admin/categories/message.does_not_exist'));
+		}
+
+		// Declare the rules for the form validation
+		$rules = array(
+			'name'   => 'required|min:3',
+			'showon_menu' => 'required|integer',
+			'showon_homepage' => 'required|integer',
+			'status' => 'required'
+		);
+
+		// Create a new validator instance from our validation rules
+		$validator = Validator::make(Input::all(), $rules);
+
+		// If validation fails, we'll exit the operation now.
+		if ($validator->fails())
+		{
+			// Ooops.. something went wrong
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
+
+		// Update the news post data
+		$category->name            	= Input::get('name');
+		$category->slug             = e(Str::slug(Input::get('name')));
+		$category->parent_id        = e(Input::get('parent_id'));
+		$category->showon_menu      = e(Input::get('showon_menu'));
+		$category->showon_homepage  = e(Input::get('showon_homepage'));
+		$category->status           = e(Input::get('status'));
+
+		// Was the news post updated?
+		if($category->save())
+		{
+			// Redirect to the new news category page
+			return Redirect::to("admin/categories/$catId/edit")->with('success', Lang::get('admin/categories/message.update.success'));
+		}
+
+		// Redirect to the categories category management page
+		return Redirect::to("admin/categories/$catId/edit")->with('error', Lang::get('admin/categories/message.update.error'));
+	}
 }
 

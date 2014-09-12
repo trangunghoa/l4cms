@@ -39,9 +39,8 @@ Category Management ::
                 <td>{{ $category->showon_homepage }}</td>
                 <td>{{ $category->status }}</td>
                 <td>
-                    @if ( Sentry::getUser()->hasAnyAccess(['news','news.editcategory']) )
-                    <a href="{{ route('update/category', $category->id) }}" class="btn btn-default btn-xs">@lang('button.edit')</a>
-                    @endif
+                    <a href="{{ route('update/category', $category->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-edit fa-fw"></i> @lang('button.edit')</a>
+                    <a onclick="confirmDelete(this); return false;" href="{{ route('delete/category', $category->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> @lang('button.delete')</a>
                 </td>
             </tr>
             @foreach ($category->subscategories as $subcate)						
@@ -52,9 +51,8 @@ Category Management ::
                 <td>{{ $subcate->showon_homepage }}</td>
                 <td>{{ $subcate->status }}</td>
                 <td>
-                    @if ( Sentry::getUser()->hasAnyAccess(['news','news.editcategory']) )
-                    <a href="{{ route('update/category', $category->id) }}" class="btn btn-default btn-xs">@lang('button.edit')</a>
-                    @endif
+                    <a href="{{ route('update/category', $subcate->id) }}" class="btn btn-default btn-xs"><i class="fa fa-edit fa-fw"></i> @lang('button.edit')</a>
+                    <a onclick="confirmDelete(this); return false;" href="{{ route('delete/category', $subcate->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> @lang('button.delete')</a>
                 </td>
             </tr>
             @endforeach
